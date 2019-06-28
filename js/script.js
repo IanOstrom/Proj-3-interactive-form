@@ -142,9 +142,7 @@ payment.change(function(){
 // Validates the given input field when called
 // and shows an error message if improperly formatted.
 function validate(input, textElement, regex, message){
-    console.log('function called');
     if(!regex.test(input.val())){
-        console.log(message);
         showError(textElement, message);
         errors+=1;
     }
@@ -192,7 +190,6 @@ setInputListeners($('#cvv'),$('#cvvError'),/^\d{3}$/,
 
 // Validates the form submission
 submitButton.submit(function(e){
-    console.log('submit button pressed');
     errors = 0;
     validate($('#name'),$('#nameError'),/.+/,
     `<p>Cannot be blank.</p>`);
@@ -217,7 +214,6 @@ submitButton.submit(function(e){
     }
     if (errors > 0){
         e.preventDefault();
-        console.log('default prevented. ' + errors + ' errors');
         showError($('#submitError'), `<p>Please fix the ${errors} error${errors>1?'s':''} above.</p>`);
     }
 });
